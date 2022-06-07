@@ -1,14 +1,21 @@
-# Desafio Clase 26: Autorización y autenticación
+# Desafio Clase 28: Global & Child Process
 
 ## Iniciar proyecto con "node server.js"
 
-### Consigna: INICIO DE SESIÓN
+### Consigna: USANDO EL OBJETO PROCESS
 
-<p>Implementar sobre el entregable que venimos realizando un mecanismo de autenticación. Para ello:</p>
-    <ul>
-        <li>Se incluirá una vista de registro, en donde se pidan email y contraseña. Estos datos se persistirán usando MongoDb, en una (nueva) colección de usuarios, cuidando que la contraseña quede encriptada (sugerencia: usar la librería bcrypt).</li>
-        <li>Una vista de login, donde se pida email y contraseña, y que realice la autenticación del lado del servidor a través de una estrategia de passport local.</li>
-        <li>Cada una de las vistas (logueo - registro) deberá tener un botón para ser redirigido a la otra.</li>
-        <li>Una vez logueado el usuario, se lo redirigirá al inicio, el cual ahora mostrará también su email, y un botón para desolguearse.</li>
-        <li>Además, se activará un espacio de sesión controlado por la sesión de passport. Esta estará activa por 10 minutos y en cada acceso se recargará este tiempo.</li>
-    </ul>
+<ul>
+    <li>Se utiliza un archivo .env cargado mediante la librería dotenv.</li>
+    <li>Se agregó la ruta '/info' que presenta una vista sencilla los siguientes datos:
+        <li>- Argumentos de entrada</li>
+        <li>- Path de ejecución</li>
+        <li>- Nombre de la plataforma (sistema operativo)</li>
+        <li>- Process id</li>
+        <li>- Versión de node.js - Carpeta del proyecto</li>
+        <li>- Memoria total reservada (rss)</li>
+    </li>
+    <li>Agregar otra ruta '/api/randoms' que permita calcular un cantidad de números aleatorios en el rango del 1 al 1000 especificada por parámetros de consulta (query).</li>
+    <li>Se devuelve al frontend un objeto que contiene como claves los números random generados junto a la cantidad de veces que salió cada uno.</li>
+    <li>Esta ruta no es bloqueante. Se utiliza el método fork de child process.</li>
+    <li>No hay bloqueo con una cantidad de 500.000.000 de randoms.</li>
+</ul>
